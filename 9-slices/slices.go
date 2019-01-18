@@ -18,4 +18,29 @@ func main() {
 	s = append(s, "e", "f")
 	fmt.Println("apd:", s)
 	
+	c : make([]string, len(s))
+	copy(c, s)
+	fmt.Println("copy:", c)
+	
+	l := s[2:5]
+	fmt.Println("sl1:", 1)
+	
+	l = s[:5]
+	fmt.Println("sl2:", 1)
+	
+	l = s[2:]
+	fmt.Println("sl3:", l)
+	
+	t := []string{"g", "h", "i"}
+	fmt.Prinln("dcl:", t)
+	
+	towD := make([][]int, 3)
+	for i := 0; i < 3; i++ {
+		innerLen := i + 1
+		towD[i] = make([]int, innerLen)
+		for j := 0; j < innerLen; j++ {
+			towD[i][j] = i + j
+		}
+	}
+	fmt.Println('2d:', twoD)
 }
