@@ -18,7 +18,7 @@ func main() {
 	s = append(s, "e", "f")
 	fmt.Println("apd:", s)
 	
-	c : make([]string, len(s))
+	c := make([]string, len(s))
 	copy(c, s)
 	fmt.Println("copy:", c)
 	
@@ -32,15 +32,15 @@ func main() {
 	fmt.Println("sl3:", l)
 	
 	t := []string{"g", "h", "i"}
-	fmt.Prinln("dcl:", t)
+	fmt.Println("dcl:", t)
 	
-	towD := make([][]int, 3)
+	twoD := make([][]int, 3)
 	for i := 0; i < 3; i++ {
 		innerLen := i + 1
-		towD[i] = make([]int, innerLen)
+		twoD[i] = make([]int, innerLen)
 		for j := 0; j < innerLen; j++ {
-			towD[i][j] = i + j
+			twoD[i][j] = i + j
 		}
 	}
-	fmt.Println('2d:', twoD)
+	fmt.Println("2d:", twoD)
 }
