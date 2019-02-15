@@ -1,0 +1,26 @@
+TCP/IP 协议
+（融资能力-》落地-》为人）
+
+为了提升服务器的吞吐能力，我们一般会优化 TCP 缓冲区大小，比如：
+
+net.ipv4.tcp_rmem = 4096 87380 16777216
+net.ipv4.tcp_wmem = 4096 65535 16777216
+
+内核通过 tcp_rmem 和 tcp_wmem 两个参数，控制滑动窗口（rwnd）大小。
+
+
+rwnd 原先最大的值为 65525(64k)，不过现在内核基本都支持 tcp_window_scaling，所以这个大小也就提高到了 1 G 字节。
+
+其初始值为 20 个 MSS 大小，即 29200 字节。
+
+rwnd 对应的是 cwnd（拥塞窗口），在旧一点的内核中，其初始值是 3 个 MSS 大小。后来采取了 Google 的建议提高到了  14600 字节，即 10 个 MSS 大小。
+
+
+Application
+TCP/IP
+PCAP -------------- WIRESHARK
+NIC
+ |-------------NETWORK
+
+ethtool -k eth01 查看网卡特性
+
