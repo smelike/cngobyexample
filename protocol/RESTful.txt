@@ -71,4 +71,47 @@ POST /users
 
 DELETE  /users/1
 
-	
+---
+
+一个真实的例子，提供一个订单信息 API，为了方便传递信息全部使用了 POST，
+
+POST /base-path/product HTTP/1.1
+Host: example.com
+Accept: application/json, text/javascript
+
+{"method":"getProduct", "data":{ "categoryId": 1, "productId": 1}}
+
+返回定义了自己的状态：
+
+{"status": "调用状态", "data": "数据", "error" : "产品没找到", "code": "错误码"}
+
+
+操作资源的动作全部在数据体里面重新定义了一遍，URL 上不能体现处任何有价值的信息，为缓存机制带来麻烦。
+
+对前端来说，在组装请求的时候显得麻烦不说，另外返回倒数据的时候，需要检查 HTTP 的状态是不是 200，还需要检查 status 字段。
+
+那么使用 RESTful 的例子是什么样：
+
+
+Retrieve products
+
+GET /base-path/categories/{categoryId}/products/ HTTP/1.1
+Host: example.com
+Accept: application/json, text/javascript
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+
+{"data":"..."}
+
+
+例子中使用路径参数构建 URL 和 HTTP 动词来区分我们需要对服务所做出的操作，而不是使用 URL 上的接口名称，例如 getProducts 等；
+
+使用 HTTP 状态码，而不是在 body 中自定义一个状态字段；URL 需要有层次的设计，
+
+例如：/category/{category_id}/products 便于获取 path 参数，在以后例如负载均衡和缓存的路由非常有好处。
+
+
+
+RESTful 的本质是基于 HTTP 协议对资源的增删改查操作做出定义。理解 HTTP 协议非常简单，HTTP 是通过	
