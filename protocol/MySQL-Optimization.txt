@@ -1,0 +1,15 @@
+MySQL 优化
+
+
+1、SQL 语句优化
+
+
+查询过程中，所有的 constant tables 会比其他表先进行读取。
+
+A constant table is any of the following:
+
+- An empty table or a table with one row.
+
+- A table that is used with a WHERE clause on a PRIMARY KEY or a UNIQUE index, where all index parts are compared to constant expressions and 
+are defined as NOT NULL.
+
