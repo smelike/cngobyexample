@@ -22,6 +22,7 @@ func main() {
 				fmt.Fprintf(os.Stderr, "dup2: %v\n", err)
 				continue
 			}
+			//fmt.Printf("fileName: %s", arg)
 			countLines(f, counts)
 			f.Close()
 		}
@@ -33,6 +34,7 @@ func main() {
 		}
 	}
 }
+// 练习出现重复的行时打印文件名称
 
 func countLines(f *os.File, counts map[string]int) {
 	input := bufio.NewScanner(f)
