@@ -25,7 +25,7 @@ func main() {
 
 Go 中很多 package 都会返回两个值，一个是正常值，一个是错误，如下所示：
 
-``
+```
 package main
 
 import "fmt"
