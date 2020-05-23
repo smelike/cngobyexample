@@ -4,6 +4,7 @@
 # [Go 语言简洁-特性](https://coolshell.cn/articles/8489.html)
 
 ***注意：这是COOLSHELL 2012 年写的文章***
+
 ----
 
 > Hello World
